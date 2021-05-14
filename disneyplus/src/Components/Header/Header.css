@@ -1,0 +1,51 @@
+.disney__header{
+    height: 70px;
+    background: #090b13;
+    display: flex;
+    align-items: center;
+    padding: 0 36px;
+}
+.header__logo{
+    width: 80px;
+}
+.header__menu{
+    display: flex;
+    flex: 1;
+    margin-left: 25px;
+    align-items: center;
+}
+.header__menuObject{
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    cursor: pointer;
+}
+.header__menuObjectLogo{
+    height: 20px;
+}
+.header__menuObjectLabel{
+    font-size: 13px;
+    letter-spacing: 1.42px;
+    position: relative;
+}
+.header__menuObjectLabel::after{
+    content: "";
+    height: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: white;
+    bottom: -6px;
+    opacity: 0;
+    transform: scaleX(0);
+}
+.header__menuObject:hover .header__menuObjectLabel::after{
+    transform: scaleX(1);
+    opacity: 1;
+}
+.header__userImage{
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
