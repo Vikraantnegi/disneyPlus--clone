@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react'
-import './ImageSlider.css'
+import './Carousel.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -8,11 +8,13 @@ import Slider from "react-slick";
 
 const Images = [
     {url: '/assets/images/slider-badging.jpg'},
-    {url: '/assets/images/slider-badag.jpg'}
+    {url: '/assets/images/slider-badag.jpg'},
+    {url: '/assets/images/slider-scale.jpg'},
+    {url: '/assets/images/slider-scales.jpg'},
 ]
 
 
-const ImageSlider = () => {
+const Carousel = () => {
     var SliderSettings = {
         dots: true,
         infinite: true,
@@ -36,4 +38,4 @@ const ImageSlider = () => {
     )
 }
 
-export default ImageSlider
+export default Carousel
