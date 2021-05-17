@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import LandingPage from './Screens/LandingPage/LandingPage';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MovieScreen from './Screens/MovieScreen/MovieScreen';
+import AuthScreen from './Screens/AuthScreen/AuthScreen';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route path="/home">
             <LandingPage />
+          </Route>
+          <Route path="/auth">
+            <AuthScreen />
           </Route>
           <Route path="/detail">
             <MovieScreen />
