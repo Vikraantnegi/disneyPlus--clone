@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState } from 'react'
+import { auth, provider } from '../../firebase';
 import './Header.css';
 
 const MenuObjects = [
@@ -11,7 +12,12 @@ const MenuObjects = [
     {logo: '/assets/images/series-icon.svg', name: 'SERIES'},
 ]
 
-const Header = () => {
+const Header = ({login, setLogin}) => {
+    const handleAuth = () => {
+        auth.signInWithPopup(provider)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
     return (
         <nav className="disney__header">
             <img className="header__logo" src="/assets/images/logo.svg" alt="logo" /> 
@@ -27,7 +33,11 @@ const Header = () => {
                     })
                 }
             </div> 
-            <img className="header__userImage" alt="user-img" src="/assets/images/userImage.jpg" />
+            {login ? (
+                <img className="header__userImage" alt="user-img" src="/assets/images/userImage.jpg" />
+            ) : (
+                <a onClick={() => handleAuth()} className="header__authButton">LOGIN</a>
+            )}
         </nav>
     )
 }
