@@ -22,6 +22,7 @@
     width: 30vh;
     min-height: 170px;
     min-width: 200px;
+    margin-top: 60px;
 }
 .background__details{
     width: 100%;
@@ -104,5 +105,5 @@
     font-size: 20px;
     margin-top: 16px;
     line-height: 1.4;
-    width: 50vw;
+    max-width: 650px;
 }
