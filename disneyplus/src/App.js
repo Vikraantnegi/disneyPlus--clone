@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import LandingPage from './Screens/LandingPage/LandingPage';
@@ -7,23 +7,24 @@ import MovieScreen from './Screens/MovieScreen/MovieScreen';
 import AuthScreen from './Screens/AuthScreen/AuthScreen';
 
 function App() {
+  const [login, setLogin] = useState(false);
   return (
-    <Router>      
-      <div className="App">
-        <Header />
+    <div className="App">
+      <Router>    
+        <Header login={login} setLogin={setLogin} />
         <Switch>
-          <Route path="/home">
-            <LandingPage />
-          </Route>
           <Route path="/auth">
             <AuthScreen />
           </Route>
           <Route path="/detail">
             <MovieScreen />
           </Route>
+          <Route path="/">
+            {login ? <LandingPage /> : <AuthScreen />}
+          </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
