@@ -1,14 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {useParams} from 'react-router-dom'
 import './MovieScreen.css'
+import db from '../../firebase'
 
-const MovieScreen = () => {
+const MovieScreen = (props) => {
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        db.collection('movies')
+            .doc(id)
+                .get()
+                    .then(doc => {
+                        if(doc.exists){
+                            setData(doc.data())
+                        } else{
+                            console.log('No such Movie available right now!')
+                        }
+                    })
+                    .catch(err => console.log(err))
+    }, [id])
+
     return (
         <div className="disneyPlus__content">
             <div className="content__background">
-                <img className="backgroundContent" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg" alt="" />
+                {data.backgroundImg && <img className="backgroundContent" src={data.backgroundImg} alt={`${data.title}-backgroundImage`} />}                
             </div>
             <div className="content__image">
-                <img className="background__details" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78" alt="" />
+            {data.titleImg &&<img className="background__details" src={data.titleImg} alt={`${data.title}-titleImage`} />} 
             </div>
             <div className="content__controls">
                 <button className="playButton">
@@ -27,10 +46,10 @@ const MovieScreen = () => {
                 </button>
             </div>
             <div className="content__points">
-                2018 &bull; 7m &bull; Family, Fantasy, Kids, Animation
+                {data.subTitle}
             </div>
             <div className="content__description">
-                A Chinese mother who's sad when her grown son leaves home gets another chance at mother when one of her dumplings springs to life. But she finds that nothing stays cute and small forever.
+                {data.description}
             </div>
         </div>
     )
