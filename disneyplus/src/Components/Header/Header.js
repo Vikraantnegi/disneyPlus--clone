@@ -25,7 +25,6 @@ const Header = () => {
         auth.onAuthStateChanged( async user => {
             if(user){
                 setUser(user);
-                // history.push('/home');
             }
         })
     }, [name])
@@ -49,7 +48,6 @@ const Header = () => {
             auth.signOut()
                 .then(res => {
                     dispatch(setSignOutState());
-                    history.push('/');
                 })
                 .catch(err => console.log(err))
         }
@@ -58,7 +56,7 @@ const Header = () => {
 
     return (
         <nav className="disney__header">
-            <img className="header__logo" src="/assets/images/logo.svg" alt="logo" />         
+            <img onClick={() => window.open('/', '_self')} className="header__logo" src="/assets/images/logo.svg" alt="logo" />         
             {image ? (
                 <>
                     <div className="header__menu">
