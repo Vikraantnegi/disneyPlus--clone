@@ -6,6 +6,8 @@
     grid-gap: 25px;
 }
 .brandContainer{
+    position: relative;
+    overflow: hidden;
     border: 3px solid rgba(249,249,249, 0.1);
     border-radius: 10px;
     cursor: pointer;
@@ -21,4 +23,20 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+.brandContainer__video{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    z-index: 0;
+}
+.brandContainer:hover .brandContainer__video{
+    opacity: 1;
 }

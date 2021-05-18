@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { auth, provider } from '../../firebase';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {setUserLoginDetails, UserImage, UserName} from "../../features/user/userSlice";
+import {setSignOutState, setUserLoginDetails, UserImage, UserName} from "../../features/user/userSlice";
 import './Header.css';
 
 const MenuObjects = [
@@ -39,11 +39,21 @@ const Header = () => {
     }
 
     const handleAuth = () => {
-        auth.signInWithPopup(provider)
-            .then(res => {
-                setUser(res.user);
-            })
-            .catch(err => console.log(err))
+        if(!name){
+            auth.signInWithPopup(provider)
+                .then(res => {
+                    setUser(res.user);
+                })
+                .catch(err => console.log(err))
+        } else{
+            auth.signOut()
+                .then(res => {
+                    dispatch(setSignOutState());
+                    history.push('/');
+                })
+                .catch(err => console.log(err))
+        }
+        
     }
 
     return (
