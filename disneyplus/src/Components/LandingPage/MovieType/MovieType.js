@@ -10,11 +10,11 @@ const MovieType = ({heading, movieList}) => {
             </h4>
             <div className="movieList__list">
                 {
-                    movieList.map((movie, index) => {
+                    movieList && movieList.map((movie) => {
                         return(
-                            <div key={index} className="movie__container">
-                                <Link to={movie.link}>
-                                    <img src={movie.logo} alt={`${movie.name}-logo`} className="movie__Logo" />
+                            <div key={movie.id} className="movie__container">
+                                <Link to={`/detail/` + movie.id}>
+                                    <img src={movie.cardImg} alt={`${movie.title}-logo`} className="movie__Logo" />
                                 </Link>
                             </div>
                         );
