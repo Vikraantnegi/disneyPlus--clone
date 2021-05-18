@@ -3,6 +3,7 @@
     padding: 0 calc(3.5vw + 5px);
     position: relative;
     overflow: hidden;
+    padding-bottom: 20px;
 }
 .disneyPlus__landing::before{
     background: url('../../assets/home-background.png') center center / cover no-repeat fixed;

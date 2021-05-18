@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './MovieType.css'
 
 const MovieType = ({heading, movieList}) => {
@@ -12,7 +13,9 @@ const MovieType = ({heading, movieList}) => {
                     movieList.map((movie, index) => {
                         return(
                             <div key={index} className="movie__container">
-                                <img src={movie.logo} alt={`${movie.name}-logo`} className="movie__Logo" />
+                                <Link to={movie.link}>
+                                    <img src={movie.logo} alt={`${movie.name}-logo`} className="movie__Logo" />
+                                </Link>
                             </div>
                         );
                     })
