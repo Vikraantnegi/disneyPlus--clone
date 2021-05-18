@@ -5,13 +5,15 @@ import LandingPage from './Screens/LandingPage/LandingPage';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MovieScreen from './Screens/MovieScreen/MovieScreen';
 import AuthScreen from './Screens/AuthScreen/AuthScreen';
+import {useSelector} from 'react-redux';
+import { UserName } from './features/user/userSlice';
 
 function App() {
-  const [login, setLogin] = useState(false);
+  const username = useSelector(UserName);
   return (
     <div className="App">
       <Router>    
-        <Header login={login} setLogin={setLogin} />
+        <Header />
         <Switch>
           <Route path="/auth">
             <AuthScreen />
@@ -20,7 +22,7 @@ function App() {
             <MovieScreen />
           </Route>
           <Route path="/">
-            {login ? <LandingPage /> : <AuthScreen />}
+            {username ? <LandingPage /> : <AuthScreen />}
           </Route>
         </Switch>
       </Router>
